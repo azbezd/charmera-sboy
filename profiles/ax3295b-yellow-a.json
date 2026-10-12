@@ -1,0 +1,25 @@
+{
+  "name": "ax3295b-yellow-a",
+  "usb_msc": "0219:3280",
+  "usb_uvc_without_sd": "1908:3282",
+  "factory_sha256": "d599a346010f69ac6b7a1c72a69daa0ee35fa3aa9f7d86f454e226e85bfa7b42",
+  "spi_read_bytes": 1048576,
+  "board_marking": "Ax3295B-V3.0",
+  "second_sample": {
+    "usb_msc": "05e3:f12b",
+    "sha256": "3a6fa4735a7bb5a6f302a011ca8332d11121d64a930404533eedd59cb3eb6c2b",
+    "supported_for_patching": false
+  },
+  "releases": {
+    "st7735-v3": "3ce337e9c67310770a4f0dcea722902e0d40f27301830d6eae256350a0cde644",
+    "charm-breach-0.1-identity": "62273b3990a3562334ba8c01f0e4da8243749849ce3fd839c9f77205428ac84d",
+    "charm-breach-0.2-effects": "d8ae47e1ffec88e711918cae5955b9249924836334f3b9b11bceb5635ee04faf",
+    "sboy-0.3": "edb5dee1d9dc5589a6235072e87430b7fe97d5a4a86f8bf221e8e8a02c368440",
+    "sboy-0.4": "43f28bbcd158cead7a239213b6b14a03f48256e5631f4582ca36847725e1ded3",
+    "sboy-0.5": "2e0bbbf6cc4efa06c1f7df77cb786c1b1ddf81d023007c1beff8c3a0fc238ad9",
+    "sboy-0.6": "37caa8d5618e790b26c6100954685cbbfee1ce160f07a6ee63ef996c560b5342",
+    "sboy-0.7": "bd39dba3379bb3a8bdcc888510917bcf12226b8ec48cc2ed0d3614a4a1c1ac76",
+    "sboy-0.8": "be9bcef13eb48d5feca12bc37604abe9a8593ccd08efa115c4a5f0f074d39d48",
+    "sboy-0.9": "3c67c73acb5d34c85da6bd28c6edfef9179c0884505eabe53e99089624cea010"
+  }
+}

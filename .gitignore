@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.DS_Store
+camera-dumps/
+tools/runs/
+custom-firmware/builds/
+custom-firmware/artwork/
+firmware/
+build/
+*.bin
+*.heic
+*.HEIC
+*.AVI
+*.avi
+*.mp4
+TIME.txt
+.env
