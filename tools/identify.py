@@ -8,7 +8,23 @@ def inspect(data):
     digest=hashlib.sha256(data).hexdigest();known={profile['factory_sha256']:'yellow-a factory',profile['second_sample']['sha256']:'second sample: NOT patch compatible'}
     known.update({v:k for k,v in profile['releases'].items()})
     strings=[m.group().decode('ascii') for m in re.finditer(rb'[\x20-\x7e]{6,}',data) if re.search(rb'(?i)(ax329|st7735|jd9850)',m.group())]
-    return dict(bytes=len(data),sha256=digest,match=known.get(digest,'UNKNOWN: do not flash these patches'),factory_patch_compatible=digest==profile['factory_sha256'],bldr_signature=data[4:8]==b'BLDR',build_time=data[0x8c030:0x8c038].decode('ascii','replace'),build_date=data[0x8c044:0x8c04f].decode('ascii','replace'),profile_strings=strings[:30],note='Strings describe firmware configuration, not physical chip identification.')
+    metadata=read_metadata(data,digest,profile)
+    return dict(bytes=len(data),sha256=digest,match=known.get(digest,'UNKNOWN: do not flash these patches'),factory_patch_compatible=digest==profile['factory_sha256'],bldr_signature=data[4:8]==b'BLDR',**metadata,profile_strings=strings[:30],note='Strings describe firmware configuration, not physical chip identification.')
+
+def read_metadata(data,digest,profile):
+    """Use offsets only after recognizing the complete image, never its USB ID."""
+    result=dict(variant=None,build_time=None,build_date=None,update_identity=None,firmware_build=None)
+    def ascii_at(offset,length):
+        field=data[offset:offset+length]
+        if len(field)!=length:raise ValueError('Truncated known firmware metadata')
+        return field.split(b'\0',1)[0].decode('ascii')
+    if digest==profile['factory_sha256'] or digest in profile['releases'].values():
+        result.update(variant='yellow-a',build_time=ascii_at(0x8c030,8),build_date=ascii_at(0x8c044,11))
+    elif digest==profile['second_sample']['sha256']:
+        # Red B compares resource 15, not the yellow build timestamp. The yellow
+        # offsets fall inside unrelated binary data in this image.
+        result.update(variant='red-b',update_identity=ascii_at(0xbde9d,12),firmware_build=ascii_at(0x64b72,14))
+    return result
 def inventory():
     if sys.platform!='darwin':raise SystemExit('USB inventory currently supports macOS only')
     tree=plistlib.loads(subprocess.check_output(['/usr/sbin/ioreg','-p','IOUSB','-l','-a']));found=[]
