@@ -1,0 +1,30 @@
+{
+  "name": "ax3295b-red-b",
+  "usb_msc": "05e3:f12b",
+  "factory_sha256": "3a6fa4735a7bb5a6f302a011ca8332d11121d64a930404533eedd59cb3eb6c2b",
+  "spi_read_bytes": 1048576,
+  "firmware_build": "20260704-V3.0",
+  "factory_update_identity": "AX3295B-V2.1",
+  "lcd": "original JD9850 profile",
+  "board_marking": null,
+  "sensor": null,
+  "releases": {
+    "red-1.0-rc7": "ccc4d9ff172608e0968099920fe9952ea5f5cea0ce636bcc87c0433c41f51253"
+  },
+  "labels": [
+    "ВХС",
+    "ЧЕРНИЛА",
+    "ГРАВЮРА",
+    "ПРИЗРАК",
+    "РАСТР",
+    "ПИКСЕЛИ",
+    "ДИЗЕР",
+    "ЧБ ДИЗЕР",
+    "ТЕРМО",
+    "БУМАГА",
+    "АСКИИ",
+    "ЛИНИИ",
+    "РЕЛЬЕФ"
+  ],
+  "status": "experimental candidate; rc7 hardware confirmation pending"
+}

@@ -8,7 +8,8 @@
   "second_sample": {
     "usb_msc": "05e3:f12b",
     "sha256": "3a6fa4735a7bb5a6f302a011ca8332d11121d64a930404533eedd59cb3eb6c2b",
-    "supported_for_patching": false
+    "supported_for_patching": false,
+    "note": "Not compatible with yellow patches; separate red-b profile and patch bundle available"
   },
   "releases": {
     "st7735-v3": "3ce337e9c67310770a4f0dcea722902e0d40f27301830d6eae256350a0cde644",
